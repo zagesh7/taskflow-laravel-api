@@ -1,0 +1,21 @@
+kind: wasmer.io/App.v0
+owner: replace-with-your-wasmer-username
+name: taskflow-laravel-api
+package: .
+capabilities:
+  database:
+    engine: mysql
+locality:
+  regions:
+    - fr-roub1
+jobs:
+  - name: migrate-and-seed
+    trigger: pre-deployment
+    action:
+      execute:
+        command: php
+        cli_args:
+          - artisan
+          - migrate
+          - --seed
+          - --force

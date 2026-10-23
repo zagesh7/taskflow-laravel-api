@@ -1,0 +1,4 @@
+<?php
+namespace Database\Seeders;
+use Illuminate\Database\Seeder;use App\Models\User;use App\Models\Project;use Illuminate\Support\Facades\Hash;
+class DatabaseSeeder extends Seeder {public function run():void{$admin=User::updateOrCreate(['email'=>'admin@taskflow.local'],['name'=>'Avery Admin','password'=>Hash::make('Admin123!'),'role'=>'admin']);$member=User::updateOrCreate(['email'=>'member@taskflow.local'],['name'=>'Morgan Member','password'=>Hash::make('Member123!'),'role'=>'user']);$project=Project::firstOrCreate(['name'=>'Website refresh'],['description'=>'Plan and deliver the next website release.','created_by'=>$admin->id]);$project->tasks()->firstOrCreate(['title'=>'Review landing page copy'],['description'=>'Review the first draft and leave feedback.','assignee_id'=>$member->id,'status'=>'IN_PROGRESS','priority'=>'HIGH','due_date'=>now()->addDays(5)->toDateString()]);}}
