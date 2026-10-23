@@ -48,7 +48,7 @@ All routes are under `/api`. Login and registration are public; the remaining ro
 
 ## Wasmer deployment
 
-`app.yaml.example` and `wasmer.toml` are deployment starting points. Copy the example to `app.yaml`, replace its owner placeholder with your Wasmer username, then configure production secrets in Wasmer: `APP_ENV=production`, `APP_DEBUG=false`, a generated `APP_KEY`, `APP_URL`, `FRONTEND_URL`, and the MySQL connection values (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`). Configure the Django service URL and shared sync token as described in `.env.example`. Review the pre-deploy migration/seed job before the first release; do not expose production credentials in Git.
+`app.yaml` and `wasmer.toml` define this deployment. The manifest provisions MySQL and runs migrations plus the demo seeder before deployment. Configure production secrets in Wasmer: `APP_ENV=production`, `APP_DEBUG=false`, a generated `APP_KEY`, `APP_URL`, `FRONTEND_URL`, and the MySQL connection values (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`). Configure the Django service URL and shared sync token as described in `.env.example`. Review the pre-deploy migration/seed job before the first release; do not expose production credentials in Git.
 
 Live API URL: _To be added after deployment._
 
@@ -58,3 +58,4 @@ Live API URL: _To be added after deployment._
 - [TaskFlow Django overdue service](https://github.com/zagesh7/taskflow-django-overdue)
 
 The system architecture and request/process flow are documented in [`ARCHITECTURE.md`](ARCHITECTURE.md).
+
