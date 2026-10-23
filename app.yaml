@@ -10,9 +10,7 @@ jobs:
     trigger: pre-deployment
     action:
       execute:
-        command: php
+        command: bash
         cli_args:
-          - artisan
-          - migrate
-          - --seed
-          - --force
+          - -lc
+          - php artisan migrate --seed --force
