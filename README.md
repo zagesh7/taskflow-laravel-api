@@ -31,6 +31,8 @@ Demo accounts created by the seeder:
 
 ## API overview
 
+The service root returns a JSON status document. The public GET /api/health endpoint is available for deployment monitoring.
+
 All routes are under `/api`. Login and registration are public; the remaining routes require a Sanctum token in `Authorization: Bearer <token>`.
 
 | Method | Path | Access |
