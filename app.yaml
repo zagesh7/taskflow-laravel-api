@@ -5,15 +5,3 @@ package: .
 capabilities:
   database:
     engine: mysql
-jobs:
-  - name: migrate-and-seed
-    trigger: pre-deployment
-    action:
-      execute:
-        package: .
-        command: php
-        cli_args:
-          - artisan
-          - migrate
-          - --seed
-          - --force
