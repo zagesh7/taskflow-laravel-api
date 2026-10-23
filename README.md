@@ -48,9 +48,9 @@ All routes are under `/api`. Login and registration are public; the remaining ro
 
 ## Wasmer deployment
 
-`app.yaml` and `wasmer.toml` define this deployment. The manifest provisions MySQL and runs migrations plus the demo seeder before deployment. Configure production secrets in Wasmer: `APP_ENV=production`, `APP_DEBUG=false`, a generated `APP_KEY`, `APP_URL`, `FRONTEND_URL`, and the MySQL connection values (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`). Configure the Django service URL and shared sync token as described in `.env.example`. Review the pre-deploy migration/seed job before the first release; do not expose production credentials in Git.
+`app.yaml` and `Anybuild` define this deployment. Wasmer provides the managed MySQL database; after each deploy the app runs Laravel migrations and the idempotent demo seeder. The seeder creates the documented demo admin/member accounts and sample project/task only when they do not already exist. Configure production secrets in Wasmer: `APP_ENV=production`, `APP_DEBUG=false`, a generated `APP_KEY`, `APP_URL`, `FRONTEND_URL`, and the MySQL connection values (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`). Configure the Django service URL and shared sync token as described in `.env.example`. Do not expose production credentials in Git.
 
-Live API URL: _To be added after deployment._
+Live API URL: https://taskflow-laravel-api.wasmer.app
 
 ## Related repositories
 

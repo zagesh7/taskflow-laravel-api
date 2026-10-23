@@ -8,7 +8,7 @@ config = laravel_config(
     composer_enable = True,
     commands = {
         "start": "php -S 0.0.0.0:$PORT -t public",
-        "after_deploy": "php artisan migrate --force",
+        "after_deploy": "php artisan migrate --force && php artisan db:seed --force",
     },
 )
 
