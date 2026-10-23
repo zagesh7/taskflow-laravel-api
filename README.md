@@ -46,6 +46,10 @@ All routes are under `/api`. Login and registration are public; the remaining ro
 | `GET` | `/api/users` | Authenticated |
 | `PATCH` | `/api/tasks/{task}` | Authenticated |
 
+## Tests
+
+Run the focused Laravel unit tests with `composer test`. The suite checks overdue state transitions, admin-only overdue closure, updates for assigned users, rejection of updates by other users, and status updates for tasks that are not overdue. These tests do not require a database.
+
 ## Wasmer deployment
 
 `app.yaml` and `Anybuild` define this deployment. Wasmer provides the managed MySQL database; after each deploy the app runs Laravel migrations and the idempotent demo seeder. The seeder creates the documented demo admin/member accounts and sample project/task only when they do not already exist. Configure production secrets in Wasmer: `APP_ENV=production`, `APP_DEBUG=false`, a generated `APP_KEY`, `APP_URL`, `FRONTEND_URL`, and the MySQL connection values (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`). Configure the Django service URL and shared sync token as described in `.env.example`. Do not expose production credentials in Git.
